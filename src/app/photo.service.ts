@@ -7,9 +7,10 @@ import { MarsRoverApiPhotos } from './mars-rover-api-photos.service';
 export class PhotoService {
   photos: FirebaseListObservable<any[]>;
 
-  constructor(private af: AngularFireDatabase) {
-    this.photos = af.list('photos');
+  constructor(private database: AngularFireDatabase) {
+    this.photos = database.list('photos');
   }
+
   addPhoto(newPhoto: Photo) {
     this.photos.push(newPhoto);
   }
@@ -22,6 +23,6 @@ export class PhotoService {
     foundPhoto.remove();
   }
   getPhotoById(photoId: string) {
-    return this.af.object('photos/' + photoId);
+    return this.database.object('photos/' + photoId);
   }
 }

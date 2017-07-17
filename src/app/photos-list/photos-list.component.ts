@@ -13,6 +13,7 @@ export class PhotosListComponent {
   @Input() childPhotos;
 
   constructor(private photoService: PhotoService) { }
+  
   saveImage(imgURL: string, camera: string, date: string) {
     let newPhoto: Photo = new Photo(imgURL, camera, date);
     this.photoService.addPhoto(newPhoto);
